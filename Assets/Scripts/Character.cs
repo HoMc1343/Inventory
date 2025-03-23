@@ -17,10 +17,7 @@ public class Character
     public int Critical { get; private set; }
     public List<Item> Inventory { get; private set; }
 
-    private int baseAttack;
-    private int baseDefense;
-    private int baseHealth;
-    private int baseCritical;
+    private int baseAttack, baseDefense, baseHealth, baseCritical;
 
     public Character(string job, string name, int level, int exp, string description, int gold, int attack, int defense, int health, int critical)
     {
@@ -30,21 +27,21 @@ public class Character
         Exp = exp;
         Description = description;
         Gold = gold;
+
         baseAttack = attack;
         baseDefense = defense;
         baseHealth = health;
         baseCritical = critical;
+
         Attack = baseAttack;
         Defense = baseDefense;
         Health = baseHealth;
         Critical = baseCritical;
+
         Inventory = new List<Item>();
     }
 
-    public void AddItem(Item item)
-    {
-        Inventory.Add(item);
-    }
+    public void AddItem(Item item) => Inventory.Add(item);
 
     public void EquipItem(Item item)
     {

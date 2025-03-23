@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            SetData();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        SetData();
     }
 
     private void SetData()
@@ -44,10 +48,6 @@ public class GameManager : MonoBehaviour
             Player.AddItem(necklace);
 
             StartCoroutine(WaitForUIManager());
-        }
-        else
-        {
-            Debug.Log("Player가 이미 존재함");
         }
     }
 
