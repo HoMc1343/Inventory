@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912ec8419370f42c980bece8ec2f72c4, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: 
+  items:
+  - name: Sword
+    type: 0
+    description: sword
+    attack: 15
+    defense: 0
+    health: 0
+    critical: 5
+    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - name: MagicStaff
+    type: 0
+    description: Magic
+    attack: 20
+    defense: 0
+    health: 0
+    critical: 10
+    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Shield
+    type: 1
+    description: TTANG
+    attack: 0
+    defense: 10
+    health: 10
+    critical: 0
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Armor
+    type: 1
+    description: TTANGTTANG
+    attack: 0
+    defense: 20
+    health: 20
+    critical: 0
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Ring
+    type: 2
+    description: ringring
+    attack: 10
+    defense: 0
+    health: 5
+    critical: 5
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Necklase
+    type: 2
+    description: lase
+    attack: 0
+    defense: 5
+    health: 5
+    critical: 5
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

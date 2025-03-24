@@ -54,6 +54,6 @@ public class UISlot : MonoBehaviour
         }
 
         SetItem(item);
-        UIManager.Instance.OpenStatus();
+        UIManager.Instance.OpenStatusUI();
     }
 }

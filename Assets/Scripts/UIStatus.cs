@@ -6,22 +6,30 @@ using UnityEngine.UI;
 
 public class UIStatus : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI attack;
-    [SerializeField] private TextMeshProUGUI defense;
-    [SerializeField] private TextMeshProUGUI health;
-    [SerializeField] private TextMeshProUGUI critical;
+    [Header("스탯 정보")]
+    [SerializeField] private TextMeshProUGUI attackText;
+    [SerializeField] private TextMeshProUGUI defenseText;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI criticalText;
+
+    [Header("버튼")]
     [SerializeField] private Button backButton;
 
     private void Start()
     {
-        backButton.onClick.AddListener(() => UIManager.Instance.OpenMainMenu());
+        if (backButton != null)
+        {
+            backButton.onClick.AddListener(() => UIManager.Instance.OpenMainMenu());
+        }
     }
 
     public void SetCharacterData(Character player)
     {
-        attack.text = $"{player.Attack}";
-        defense.text = $"{player.Defense}";
-        health.text = $"{player.Health}";
-        critical.text = $"{player.Critical}";
+        if (player == null) return;
+
+        attackText.text = $"{player.Attack}";
+        defenseText.text = $"{player.Defense}";
+        healthText.text = $"{player.Health}";
+        criticalText.text = $"{player.Critical}";
     }
 }

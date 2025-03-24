@@ -41,17 +41,20 @@ public class Character
         Inventory = new List<Item>();
     }
 
-    public void AddItem(Item item) => Inventory.Add(item);
+    public void AddItem(Item item)
+    {
+        if (item != null)
+        {
+            Inventory.Add(item);
+        }
+    }
 
     public void EquipItem(Item item)
     {
         if (Inventory.Contains(item) && !item.IsEquipped)
         {
             item.Equip();
-            Attack += item.Attack;
-            Defense += item.Defense;
-            Health += item.Health;
-            Critical += item.Critical;
+            UpdateStats(item, true);
         }
     }
 
@@ -60,10 +63,16 @@ public class Character
         if (Inventory.Contains(item) && item.IsEquipped)
         {
             item.UnEquip();
-            Attack -= item.Attack;
-            Defense -= item.Defense;
-            Health -= item.Health;
-            Critical -= item.Critical;
+            UpdateStats(item, false);
         }
+    }
+
+    private void UpdateStats(Item item, bool isEquipping)
+    {
+        int multiplier = isEquipping ? 1 : -1;
+        Attack += item.Attack * multiplier;
+        Defense += item.Defense * multiplier;
+        Health += item.Health * multiplier;
+        Critical += item.Critical * multiplier;
     }
 }

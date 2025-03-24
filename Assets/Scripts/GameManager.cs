@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public Character Player { get; private set; }
 
+    [Header("아이템 데이터베이스")]
+    [SerializeField] private ItemDatabase itemDatabase;
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,7 +25,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ValidateItemDatabase();
         SetData();
+    }
+
+    private void ValidateItemDatabase()
+    {
+        if (itemDatabase == null)
+        {
+            Debug.LogError("GameManager: 아이템 데이터베이스가 할당되지 않았습니다. Inspector에서 확인해주세요.");
+            return;
+        }
     }
 
     private void SetData()
@@ -30,26 +43,10 @@ public class GameManager : MonoBehaviour
         if (Player == null)
         {
             Player = new Character("Coder", "Alex CoCo", 5, 10, "Going To Home!", 3000, 35, 40, 100, 25);
-
-            Item sword = new Item("강철검", ItemType.Weapon, "기본적인 강철로 만든 검", 15, 0, 0, 5);
-            Item magicStaff = new Item("마법지팡이", ItemType.Weapon, "마법력을 증폭시키는 지팡이", 20, 0, 0, 10);
-
-            Item shield = new Item("철방패", ItemType.Armor, "기본적인 방어구", 0, 15, 20, 0);
-            Item leatherArmor = new Item("가죽갑옷", ItemType.Armor, "가볍고 유연한 갑옷", 0, 10, 15, 5);
-
-            Item ring = new Item("힘의 반지", ItemType.Accessory, "힘을 증가시키는 반지", 5, 5, 10, 5);
-            Item necklace = new Item("보호의 목걸이", ItemType.Accessory, "방어력을 증가시키는 목걸이", 0, 10, 15, 0);
-
-            Player.AddItem(sword);
-            Player.AddItem(magicStaff);
-            Player.AddItem(shield);
-            Player.AddItem(leatherArmor);
-            Player.AddItem(ring);
-            Player.AddItem(necklace);
-
             StartCoroutine(WaitForUIManager());
         }
     }
+
 
     private IEnumerator WaitForUIManager()
     {

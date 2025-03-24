@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         uiInventory.gameObject.SetActive(false);
     }
 
-    public void OpenStatus()
+    public void OpenStatusUI()
     {
         uiMainMenu.gameObject.SetActive(true);
         uiMainMenuButton.SetActive(false);
@@ -52,7 +52,6 @@ public class UIManager : MonoBehaviour
         uiMainMenuButton.SetActive(false);
         uiStatus.gameObject.SetActive(false);
         uiInventory.gameObject.SetActive(true);
-        uiInventory.SetCharacterData(GameManager.Instance.Player);
     }
 
     public void SetCharacterData(Character player)
