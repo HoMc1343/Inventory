@@ -8,8 +8,9 @@ using TMPro;
 public class UIInventory : MonoBehaviour
 {
     [Header("슬롯 설정")]
-    [SerializeField] private Transform slotParent;
     [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private Transform slotParent;
+    [SerializeField] private int maxSlots = 20;
 
     [Header("아이템 정보 UI")]
     [SerializeField] private GameObject itemInfoPanel;
@@ -22,63 +23,60 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private Button backButton;
 
     private List<UISlot> slots = new List<UISlot>();
+    private Character player;
 
     private void Start()
     {
+        InitializeSlots();
         if (backButton != null)
         {
             backButton.onClick.AddListener(() => UIManager.Instance.OpenMainMenu());
         }
     }
 
-    public void SetCharacterData(Character player)
+    private void InitializeSlots()
     {
-        if (slotParent == null || slotPrefab == null)
-        {
-            Debug.LogError("UIInventory: 필수 컴포넌트가 없어 인벤토리를 표시할 수 없습니다.");
-            return;
-        }
-
-        ClearSlots();
-
-        if (player?.Inventory == null)
-        {
-            Debug.LogError("UIInventory: Player 또는 Inventory가 null입니다.");
-            return;
-        }
-
-        CreateSlots(player.Inventory);
-    }
-
-    private void ClearSlots()
-    {
+        // 기존 슬롯 제거
         foreach (Transform child in slotParent)
         {
             Destroy(child.gameObject);
         }
         slots.Clear();
-    }
 
-    private void CreateSlots(List<Item> inventory)
-    {
-        foreach (var item in inventory)
+        // 새 슬롯 생성
+        for (int i = 0; i < maxSlots; i++)
         {
             GameObject slotObj = Instantiate(slotPrefab, slotParent);
             UISlot slot = slotObj.GetComponent<UISlot>();
-            if (slot != null)
+            slots.Add(slot);
+        }
+    }
+
+    public void SetCharacterData(Character character)
+    {
+        player = character;
+        UpdateInventoryUI();
+    }
+
+    private void UpdateInventoryUI()
+    {
+        if (player == null) return;
+
+        var items = player.GetInventoryItems();
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (i < items.Count)
             {
-                slot.SetItem(item);
-                slot.OnSlotClicked += ShowItemInfo;
-                slots.Add(slot);
+                slots[i].SetItem(items[i]);
             }
             else
             {
-                Debug.LogError("UIInventory: slotPrefab에 UISlot 컴포넌트가 없습니다!");
+                slots[i].SetItem(null);
             }
         }
     }
 
-    private void ShowItemInfo(Item item)
+    public void ShowItemInfo(Item item)
     {
         if (item == null)
         {
@@ -90,13 +88,14 @@ public class UIInventory : MonoBehaviour
         itemNameText.text = item.Name;
         itemTypeText.text = item.Type.ToString();
         itemDescriptionText.text = item.Description;
-
+        
+        // 스탯 정보 표시
         string stats = "";
         if (item.Attack > 0) stats += $"공격력: +{item.Attack}\n";
         if (item.Defense > 0) stats += $"방어력: +{item.Defense}\n";
         if (item.Health > 0) stats += $"체력: +{item.Health}\n";
-        if (item.Critical > 0) stats += $"치명타: +{item.Critical}\n";
-
+        if (item.Critical > 0) stats += $"치명타: +{item.Critical}%";
+        
         itemStatsText.text = stats;
     }
 }

@@ -13,51 +13,27 @@ MonoBehaviour:
   m_Name: ItemDatabase
   m_EditorClassIdentifier: 
   items:
-  - name: Sword
-    type: 0
-    description: sword
-    attack: 15
-    defense: 0
-    health: 0
-    critical: 5
-    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - name: MagicStaff
-    type: 0
-    description: Magic
-    attack: 20
-    defense: 0
-    health: 0
-    critical: 10
-    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Shield
-    type: 1
-    description: TTANG
-    attack: 0
-    defense: 10
-    health: 10
-    critical: 0
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Armor
-    type: 1
-    description: TTANGTTANG
-    attack: 0
-    defense: 20
-    health: 20
-    critical: 0
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Ring
-    type: 2
-    description: ringring
-    attack: 10
-    defense: 0
-    health: 5
-    critical: 5
-    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Necklase
-    type: 2
-    description: lase
-    attack: 0
-    defense: 5
-    health: 5
-    critical: 5
-    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - Name: Sword
+    Type: 0
+    Description: Iron
+    Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    Attack: 20
+    Defense: 0
+    Health: 0
+    Critical: 10
+  - Name: Armor
+    Type: 1
+    Description: TTANG
+    Icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    Attack: 0
+    Defense: 30
+    Health: 50
+    Critical: 0
+  - Name: Ring
+    Type: 2
+    Description: ringring
+    Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    Attack: 10
+    Defense: 5
+    Health: 5
+    Critical: 10

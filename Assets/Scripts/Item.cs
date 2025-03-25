@@ -9,30 +9,43 @@ public enum ItemType
     Accessory
 }
 
-[CreateAssetMenu(fileName = "NewItem", menuName = "Item/Create New Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Game/Item")]
 public class Item : ScriptableObject
 {
-    public string Name { get; private set; }
-    public ItemType Type { get; private set; }
-    public string Description { get; private set; }
-    public int Attack { get; private set; }
-    public int Defense { get; private set; }
-    public int Health { get; private set; }
-    public int Critical { get; private set; }
-    public bool IsEquipped { get; private set; }
-    public Sprite Icon { get; private set; }
+    [Header("기본 정보")]
+    [SerializeField] private string itemName;
+    [SerializeField] private ItemType type;
+    [SerializeField] private string description;
+    [SerializeField] private Sprite icon;
 
-    public void Initialize(string name, ItemType type, string description, int attack, int defense, int health, int critical, Sprite icon)
+    [Header("스탯")]
+    [SerializeField] private float attack;
+    [SerializeField] private float defense;
+    [SerializeField] private float health;
+    [SerializeField] private float critical;
+
+    public string Name => itemName;
+    public ItemType Type => type;
+    public string Description => description;
+    public Sprite Icon => icon;
+    public float Attack => attack;
+    public float Defense => defense;
+    public float Health => health;
+    public float Critical => critical;
+    public bool IsEquipped { get; set; }
+
+    public void Initialize(string name, ItemType type, string description, Sprite icon, 
+        float attack, float defense, float health, float critical)
     {
-        Name = name;
-        Type = type;
-        Description = description;
-        Attack = attack;
-        Defense = defense;
-        Health = health;
-        Critical = critical;
-        Icon = icon;
-        IsEquipped = false;
+        this.itemName = name;
+        this.type = type;
+        this.description = description;
+        this.icon = icon;
+        this.attack = attack;
+        this.defense = defense;
+        this.health = health;
+        this.critical = critical;
+        this.IsEquipped = false;
     }
 
     public void Equip() => IsEquipped = true;
