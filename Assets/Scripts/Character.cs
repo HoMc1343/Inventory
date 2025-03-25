@@ -78,7 +78,7 @@ public class Character : MonoBehaviour
             UnEquipItem(equippedItems[item.Type]);
         }
 
-        // 새 아이템 장착
+        // 아이템 장착
         equippedItems[item.Type] = item;
         item.IsEquipped = true;
         UpdateStats();

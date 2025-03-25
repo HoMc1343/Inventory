@@ -34,20 +34,6 @@ public class Item : ScriptableObject
     public float Critical => critical;
     public bool IsEquipped { get; set; }
 
-    public void Initialize(string name, ItemType type, string description, Sprite icon, 
-        float attack, float defense, float health, float critical)
-    {
-        this.itemName = name;
-        this.type = type;
-        this.description = description;
-        this.icon = icon;
-        this.attack = attack;
-        this.defense = defense;
-        this.health = health;
-        this.critical = critical;
-        this.IsEquipped = false;
-    }
-
     public void Equip() => IsEquipped = true;
     public void UnEquip() => IsEquipped = false;
 }

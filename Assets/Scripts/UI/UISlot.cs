@@ -15,8 +15,6 @@ public class UISlot : MonoBehaviour
 
     private Item currentItem;
 
-    public event Action<Item> OnSlotClicked;
-
     private void Start()
     {
         if (equipButton != null)

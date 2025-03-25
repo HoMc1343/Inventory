@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemDatabase itemDatabase;
 
     [Header("초기 아이템")]
-    [SerializeField] private string[] initialItemNames = new string[] { "강철검", "가죽갑옷", "마력반지" };
+    [SerializeField] private string[] initialItemNames = new string[] { "Sword", "Armor", "Ring" };
 
     private void Awake()
     {
@@ -30,44 +30,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeGame();
-    }
-
-    private void InitializeGame()
-    {
-        if (!ValidateComponents()) return;
-
         CreatePlayer();
         AddInitialItems();
-    }
-
-    private bool ValidateComponents()
-    {
-        if (playerPrefab == null)
-        {
-            Debug.LogError("GameManager: playerPrefab이 할당되지 않았습니다!");
-            return false;
-        }
-
-        if (itemDatabase == null)
-        {
-            Debug.LogError("GameManager: itemDatabase가 할당되지 않았습니다!");
-            return false;
-        }
-
-        return true;
     }
 
     private void CreatePlayer()
     {
         GameObject playerObject = Instantiate(playerPrefab);
         Player = playerObject.GetComponent<Character>();
-        
-        if (Player == null)
-        {
-            Debug.LogError("GameManager: playerPrefab에 Character 컴포넌트가 없습니다!");
-            return;
-        }
 
         Player.SetInitialStats(
             name: "Alex CoCo",

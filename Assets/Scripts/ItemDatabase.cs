@@ -4,21 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Game/Item Database")]
 public class ItemDatabase : ScriptableObject
 {
-    [System.Serializable]
-    public class ItemData
-    {
-        public string Name;
-        public ItemType Type;
-        public string Description;
-        public Sprite Icon;
-        public float Attack;
-        public float Defense;
-        public float Health;
-        public float Critical;
-    }
-
-    [SerializeField] private List<ItemData> items = new List<ItemData>();
-    private Dictionary<string, ItemData> itemDictionary = new Dictionary<string, ItemData>();
+    [SerializeField] private List<Item> items = new List<Item>();
+    private Dictionary<string, Item> itemDictionary = new Dictionary<string, Item>();
 
     private void OnEnable()
     {
@@ -39,31 +26,11 @@ public class ItemDatabase : ScriptableObject
 
     public Item GetItem(string itemName)
     {
-        if (itemDictionary.TryGetValue(itemName, out ItemData itemData))
-        {
-            return CreateItemFromData(itemData);
-        }
-        return null;
+        return itemDictionary.TryGetValue(itemName, out Item item) ? item : null;
     }
 
-    private Item CreateItemFromData(ItemData data)
-    {
-        Item item = ScriptableObject.CreateInstance<Item>();
-        item.Initialize(
-            name: data.Name,
-            type: data.Type,
-            description: data.Description,
-            icon: data.Icon,
-            attack: data.Attack,
-            defense: data.Defense,
-            health: data.Health,
-            critical: data.Critical
-        );
-        return item;
-    }
-
-    public List<ItemData> GetAllItems()
+    public List<Item> GetAllItems()
     {
         return items;
     }
-} 
+}

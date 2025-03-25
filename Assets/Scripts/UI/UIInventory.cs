@@ -17,7 +17,6 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemTypeText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
-    [SerializeField] private TextMeshProUGUI itemStatsText;
 
     [Header("버튼")]
     [SerializeField] private Button backButton;
@@ -88,14 +87,5 @@ public class UIInventory : MonoBehaviour
         itemNameText.text = item.Name;
         itemTypeText.text = item.Type.ToString();
         itemDescriptionText.text = item.Description;
-        
-        // 스탯 정보 표시
-        string stats = "";
-        if (item.Attack > 0) stats += $"공격력: +{item.Attack}\n";
-        if (item.Defense > 0) stats += $"방어력: +{item.Defense}\n";
-        if (item.Health > 0) stats += $"체력: +{item.Health}\n";
-        if (item.Critical > 0) stats += $"치명타: +{item.Critical}%";
-        
-        itemStatsText.text = stats;
     }
 }

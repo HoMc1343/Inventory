@@ -13,27 +13,6 @@ MonoBehaviour:
   m_Name: ItemDatabase
   m_EditorClassIdentifier: 
   items:
-  - Name: Sword
-    Type: 0
-    Description: Iron
-    Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    Attack: 20
-    Defense: 0
-    Health: 0
-    Critical: 10
-  - Name: Armor
-    Type: 1
-    Description: TTANG
-    Icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    Attack: 0
-    Defense: 30
-    Health: 50
-    Critical: 0
-  - Name: Ring
-    Type: 2
-    Description: ringring
-    Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    Attack: 10
-    Defense: 5
-    Health: 5
-    Critical: 10
+  - {fileID: 11400000, guid: bc5fc4db7ae594c77a349ad291205373, type: 2}
+  - {fileID: 11400000, guid: ac1f461df916d47acb5c426190cef43c, type: 2}
+  - {fileID: 11400000, guid: 16e26c16680df4cd3a92434e44bea3f6, type: 2}
