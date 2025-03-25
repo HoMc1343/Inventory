@@ -75,17 +75,18 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    public void ShowItemInfo(Item item)
+    public void ShowItemInfo(object obj)
     {
-        if (item == null)
+        if (obj is Item item)
+        {
+            itemInfoPanel.SetActive(true);
+            itemNameText.text = item.Name;
+            itemTypeText.text = item.Type.ToString();
+            itemDescriptionText.text = item.Description;
+        }
+        else
         {
             itemInfoPanel.SetActive(false);
-            return;
         }
-
-        itemInfoPanel.SetActive(true);
-        itemNameText.text = item.Name;
-        itemTypeText.text = item.Type.ToString();
-        itemDescriptionText.text = item.Description;
     }
 }

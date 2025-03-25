@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc4095e90e7549f28dc3503970d960f, type: 3}
   m_Name: Ring
   m_EditorClassIdentifier: 
-  itemName: Ring
-  type: 2
-  description: ringring
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  attack: 5
-  defense: 10
-  health: 10
-  critical: 5
+  itemName: "\uB9C8\uB825\uBC18\uC9C0"
+  type: 0
+  description: 
+  icon: {fileID: 21300000, guid: 64b64f4ad929643d38c5f026e3000a7d, type: 3}
+  attack: 0
+  defense: 0
+  health: 0
+  critical: 0

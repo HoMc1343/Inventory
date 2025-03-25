@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc4095e90e7549f28dc3503970d960f, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  itemName: Sword
+  itemName: "\uAC15\uCCA0\uAC80"
   type: 0
-  description: sdsdsd
-  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  attack: 20
+  description: 
+  icon: {fileID: 21300000, guid: 64b64f4ad929643d38c5f026e3000a7d, type: 3}
+  attack: 0
   defense: 0
   health: 0
-  critical: 10
+  critical: 0

@@ -36,4 +36,18 @@ public class Item : ScriptableObject
 
     public void Equip() => IsEquipped = true;
     public void UnEquip() => IsEquipped = false;
+
+    public static Item CreateInstance(string name, ItemType itemType, string desc, Sprite itemIcon, float atk, float def, float hp, float crit)
+    {
+        Item newItem = ScriptableObject.CreateInstance<Item>();
+        newItem.itemName = name;
+        newItem.type = itemType;
+        newItem.description = desc;
+        newItem.icon = itemIcon;
+        newItem.attack = atk;
+        newItem.defense = def;
+        newItem.health = hp;
+        newItem.critical = crit;
+        return newItem;
+    }
 }
