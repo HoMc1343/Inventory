@@ -35,19 +35,18 @@ public class UIInventory : MonoBehaviour
 
     private void InitializeSlots()
     {
-        // 기존 슬롯 제거
         foreach (Transform child in slotParent)
         {
             Destroy(child.gameObject);
         }
         slots.Clear();
 
-        // 새 슬롯 생성
         for (int i = 0; i < maxSlots; i++)
         {
             GameObject slotObj = Instantiate(slotPrefab, slotParent);
             UISlot slot = slotObj.GetComponent<UISlot>();
             slots.Add(slot);
+            slot.onItemClicked.AddListener(ShowItemInfo);
         }
     }
 
@@ -75,18 +74,17 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    public void ShowItemInfo(object obj)
+    public void ShowItemInfo(Item item)
     {
-        if (obj is Item item)
-        {
-            itemInfoPanel.SetActive(true);
-            itemNameText.text = item.Name;
-            itemTypeText.text = item.Type.ToString();
-            itemDescriptionText.text = item.Description;
-        }
-        else
+        if (item == null) 
         {
             itemInfoPanel.SetActive(false);
+            return;
         }
+
+        itemInfoPanel.SetActive(true);
+        itemNameText.text = item.Name;
+        itemTypeText.text = item.Type.ToString();
+        itemDescriptionText.text = item.Description;
     }
 }

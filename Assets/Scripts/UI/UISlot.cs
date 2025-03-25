@@ -3,26 +3,41 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;
     private Item item;
+    public UnityEvent<Item> onItemClicked;
 
-    public void SetItem(object obj)
+    private void Awake()
     {
-        if (obj is Item newItem)
+        if(onItemClicked == null)
+            onItemClicked = new UnityEvent<Item>();
+    }
+
+    public void SetItem(Item newItem)
+    {
+        item = newItem;
+        if (item != null)
         {
-            item = newItem;
             itemIcon.sprite = item.Icon;
             itemIcon.enabled = true;
         }
         else
         {
-            item = null;
             itemIcon.sprite = null;
             itemIcon.enabled = false;
+        }
+    }
+
+    public void OnClick()
+    {
+        if (item != null)
+        {
+            onItemClicked.Invoke(item);
         }
     }
 }
